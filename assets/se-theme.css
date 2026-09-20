@@ -1,0 +1,311 @@
+/* ==========================================================================
+   SMART Engineering — theme (light / dark), logo and image animations
+   Loaded AFTER each page's inline <style>, so it overrides where needed.
+   The original layout, spacing and typography are untouched.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DARK THEME PALETTE
+   The page CSS already draws everything from these variables, so redefining
+   them flips the whole site. The handful of places where a variable is used
+   for BOTH text and a background are corrected further down.
+   -------------------------------------------------------------------------- */
+html[data-theme="dark"]{
+  color-scheme: dark;
+
+  --navy:#e7eef7;          /* now used as heading / high-contrast TEXT */
+  --navy-deep:#0a1b30;     /* stays dark: topbar, footer, deep surfaces */
+  --amber:#f7b32c;
+  --amber-dark:#f0a91f;    /* brightened so it stays readable on dark */
+
+  --gray-50:#111b26;       /* alternating section background */
+  --gray-100:#22303f;      /* borders / hairlines */
+  --gray-500:#9db0c4;      /* muted body text */
+  --gray-700:#cfdae6;      /* default body text */
+  --white:#0d151e;         /* page + card surface */
+
+  --shadow:0 10px 30px rgba(0,0,0,0.45);
+
+  /* fixed dark tones used where a *background* must stay dark */
+  --deep-grad:linear-gradient(135deg,#14304f 0%,#0a1b30 100%);
+}
+
+html[data-theme="light"]{ color-scheme: light; }
+
+html, body{ transition: background-color .3s ease, color .3s ease; }
+
+/* --- dark-mode corrections: variables that double as backgrounds ---------- */
+html[data-theme="dark"] .page-hero,
+html[data-theme="dark"] .cta-strip,
+html[data-theme="dark"] .stats-section{ background: var(--deep-grad); }
+
+html[data-theme="dark"] .page-hero h1,
+html[data-theme="dark"] .cta-strip h2,
+html[data-theme="dark"] .stats-section h2,
+html[data-theme="dark"] .hero-content h1,
+html[data-theme="dark"] footer h3{ color:#ffffff; }
+
+html[data-theme="dark"] .hero-content,
+html[data-theme="dark"] .btn-ghost,
+html[data-theme="dark"] .gallery-tile .caption,
+html[data-theme="dark"] .lightbox-close,
+html[data-theme="dark"] .lightbox-nav{ color:#ffffff; }
+
+html[data-theme="dark"] .btn-ghost:hover{ border-color:#ffffff; }
+
+html[data-theme="dark"] .gallery-frame,
+html[data-theme="dark"] .hero{ background:#0a1b30; }
+
+/* arrow buttons keep a light pill, so their glyph must stay dark */
+html[data-theme="dark"] .gallery-arrow{ color:#0f2540; }
+
+html[data-theme="dark"] .filter-tab.active{
+  background:#1d3a5f; color:#ffffff; border-color:#1d3a5f;
+}
+html[data-theme="dark"] .value-item .icon{ background:#16304f; }
+
+/* cards sit slightly above the page surface so they stay readable */
+html[data-theme="dark"] .mv-card,
+html[data-theme="dark"] .service-card,
+html[data-theme="dark"] .product-card,
+html[data-theme="dark"] .contact-card,
+html[data-theme="dark"] .help-card,
+html[data-theme="dark"] .faq-item,
+html[data-theme="dark"] .gallery-tile,
+html[data-theme="dark"] .map-frame{ background:#141f2b; }
+
+html[data-theme="dark"] .map-frame .map-label{ background:#141f2b; }
+html[data-theme="dark"] .field input,
+html[data-theme="dark"] .field textarea{ background:#0d151e; color:var(--gray-700); }
+html[data-theme="dark"] .field input:focus,
+html[data-theme="dark"] .field textarea:focus{ background:#141f2b; }
+html[data-theme="dark"] ::placeholder{ color:#6f8298; }
+
+/* brand tiles are photo/logo tiles — keep them light so the marks read */
+html[data-theme="dark"] .brand-grid figure{ background:#f3f5f8; border-color:#22303f; }
+
+/* embedded Google maps are always light — soften them a little in dark mode */
+html[data-theme="dark"] .map-frame iframe{ filter:brightness(.88) contrast(1.02); }
+
+/* --------------------------------------------------------------------------
+   2. LOGO IN THE HEADER
+   -------------------------------------------------------------------------- */
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  line-height:1;
+}
+.logo .logo-mark{
+  height:40px;
+  width:auto;
+  flex:none;
+  display:block;
+  /* the PNGs are transparent; this keeps them from looking pasted on */
+  filter:drop-shadow(0 2px 5px rgba(0,0,0,.18));
+  transition:transform .45s cubic-bezier(.2,.7,.3,1), filter .45s ease;
+  transform-origin:center;
+}
+html[data-theme="dark"] .logo .logo-mark{
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,.55));
+}
+.logo:hover .logo-mark{
+  transform:scale(1.07) rotate(-1.5deg);
+  filter:drop-shadow(0 4px 12px rgba(242,167,27,.45));
+}
+/* only the mark matching the active theme is shown */
+html[data-theme="light"] .logo-mark-dark{ display:none; }
+html[data-theme="dark"]  .logo-mark-light{ display:none; }
+
+/* keep the original two-tone wordmark colours */
+.logo .logo-name{
+  color:var(--navy);
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:22px;
+  letter-spacing:.3px;
+  white-space:nowrap;
+}
+.logo .logo-name span{ color:var(--amber); }
+
+@media (max-width:760px){
+  .logo .logo-mark{ height:33px; }
+  .logo .logo-name{ font-size:17.5px; }
+  .logo{ gap:9px; }
+  .nav{ gap:10px; }
+}
+@media (max-width:480px){
+  .logo .logo-mark{ height:29px; }
+  .logo .logo-name{ font-size:15px; }
+  .logo{ gap:8px; }
+  .nav{ gap:8px; padding-left:16px; padding-right:16px; }
+  .theme-toggle{ width:34px; height:34px; }
+  .theme-toggle svg{ width:16px; height:16px; }
+  .menu-toggle{ padding:4px; }
+  .menu-toggle svg{ width:22px; height:22px; }
+}
+@media (max-width:360px){
+  .logo .logo-mark{ height:26px; }
+  .logo .logo-name{ font-size:13.5px; }
+}
+
+/* small mark next to the copyright line in the footer (footer is always dark) */
+.footer-bottom .footer-mark{
+  height:26px; width:auto; display:inline-block; vertical-align:-8px;
+  margin-right:9px; opacity:.92;
+  transition:transform .4s ease, opacity .4s ease;
+}
+.footer-bottom .footer-mark:hover{ transform:scale(1.08); opacity:1; }
+
+/* --------------------------------------------------------------------------
+   3. THEME TOGGLE BUTTON
+   -------------------------------------------------------------------------- */
+.nav{ gap:16px; }
+@media (min-width:901px){ .nav-links{ margin-left:auto; } }
+@media (max-width:900px){
+  /* keep the theme button and the hamburger side by side at the right edge */
+  .theme-toggle{ order:2; margin-left:auto; }
+  .menu-toggle{ order:3; }
+}
+
+.theme-toggle{
+  width:40px; height:40px; flex:none;
+  border-radius:50%;
+  border:1px solid var(--gray-100);
+  background:var(--gray-50);
+  color:var(--navy);
+  display:inline-flex; align-items:center; justify-content:center;
+  cursor:pointer; padding:0;
+  transition:background .25s ease, border-color .25s ease, transform .25s ease, color .25s ease;
+}
+.theme-toggle:hover{
+  border-color:var(--amber);
+  color:var(--amber-dark);
+  transform:rotate(-18deg) scale(1.06);
+}
+.theme-toggle:focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+.theme-toggle svg{ width:19px; height:19px; fill:currentColor; display:block; }
+html[data-theme="light"] .theme-toggle .icon-sun{ display:none; }
+html[data-theme="dark"]  .theme-toggle .icon-moon{ display:none; }
+
+/* --------------------------------------------------------------------------
+   4. IMAGE ANIMATIONS
+   Classes are added by se-theme.js, so with JavaScript off nothing is hidden.
+   -------------------------------------------------------------------------- */
+
+/* 4a. reveal on scroll */
+.se-reveal{
+  opacity:0;
+  transform:translateY(28px) scale(.985);
+  transition:opacity .75s cubic-bezier(.22,.61,.36,1),
+             transform .75s cubic-bezier(.22,.61,.36,1);
+  will-change:opacity, transform;
+}
+.se-reveal.se-in{ opacity:1; transform:none; }
+
+/* 4b. slow zoom on hover, inside the frames that already clip overflow */
+.split-media img,
+.about-media img,
+.service-media img,
+.product-card .thumb img,
+.brand-grid figure img,
+.help-card img{
+  transition:transform .7s cubic-bezier(.2,.7,.3,1), filter .5s ease;
+  will-change:transform;
+}
+.split-media:hover img,
+.about-media:hover img,
+.product-card:hover .thumb img,
+.service-media:hover img{ transform:scale(1.07); }
+
+.brand-grid figure{ position:relative; }
+.brand-grid figure:hover img{ transform:scale(1.09); }
+.help-card:hover img{ transform:scale(1.12) rotate(-4deg); }
+
+/* give the services images the same clipped frame as the other media blocks */
+.service-media{ border-radius:16px; overflow:hidden; }
+
+/* lift the frames a touch on hover */
+.split-media, .about-media, .service-media, .map-frame{
+  transition:transform .5s cubic-bezier(.2,.7,.3,1), box-shadow .5s ease;
+}
+.split-media:hover, .about-media:hover, .service-media:hover{
+  transform:translateY(-6px);
+  box-shadow:0 22px 44px rgba(15,37,64,.18);
+}
+html[data-theme="dark"] .split-media:hover,
+html[data-theme="dark"] .about-media:hover,
+html[data-theme="dark"] .service-media:hover{
+  box-shadow:0 22px 44px rgba(0,0,0,.6);
+}
+.product-card{ transition:transform .35s ease, box-shadow .35s ease; }
+.product-card:hover{ transform:translateY(-7px); box-shadow:0 22px 44px rgba(15,37,64,.16); }
+html[data-theme="dark"] .product-card:hover{ box-shadow:0 22px 44px rgba(0,0,0,.6); }
+
+.gallery-tile{ transition:transform .35s ease, box-shadow .35s ease; }
+.gallery-tile:hover{ transform:translateY(-5px); }
+
+/* 4c. light sweep across image tiles on hover */
+.brand-grid figure::after,
+.product-card .thumb::after,
+.gallery-tile::after{
+  content:"";
+  position:absolute; top:0; bottom:0; left:-70%;
+  width:55%;
+  background:linear-gradient(100deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,.42) 50%,
+      rgba(255,255,255,0) 100%);
+  transform:skewX(-18deg);
+  pointer-events:none;
+  opacity:0;
+}
+.product-card .thumb{ position:relative; }
+.brand-grid figure:hover::after,
+.product-card:hover .thumb::after,
+.gallery-tile:hover::after{
+  opacity:1;
+  animation:seSweep .9s ease forwards;
+}
+@keyframes seSweep{
+  from{ left:-70%; }
+  to  { left:125%; }
+}
+
+/* 4d. slow Ken-Burns drift on the hero and gallery sliders */
+.hero-track img{ animation:seKenBurns 20s ease-in-out infinite alternate; }
+.gallery-track img{ animation:seKenBurns 26s ease-in-out infinite alternate; }
+@keyframes seKenBurns{
+  from{ transform:scale(1)     translate3d(0,0,0); }
+  to  { transform:scale(1.085) translate3d(-1.2%,-1%,0); }
+}
+
+/* 4e. gentle float for the standalone "how we help" icons */
+.help-card img{ animation:seFloat 5.5s ease-in-out infinite; }
+@keyframes seFloat{
+  0%,100%{ transform:translateY(0); }
+  50%    { transform:translateY(-7px); }
+}
+.help-card:hover img{ animation:none; }
+
+/* 4f. first-paint entrance for the header logo */
+@keyframes seLogoIn{
+  from{ opacity:0; transform:translateX(-14px) scale(.9); }
+  to  { opacity:1; transform:none; }
+}
+.logo .logo-mark{ animation:seLogoIn .65s cubic-bezier(.22,.61,.36,1) both; }
+
+/* --------------------------------------------------------------------------
+   5. ACCESSIBILITY — honour the OS "reduce motion" setting
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce){
+  .se-reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .hero-track img,
+  .gallery-track img,
+  .help-card img,
+  .logo .logo-mark{ animation:none !important; }
+  .brand-grid figure:hover::after,
+  .product-card:hover .thumb::after,
+  .gallery-tile:hover::after{ animation:none; opacity:0; }
+  *{ transition-duration:.01ms !important; }
+}
