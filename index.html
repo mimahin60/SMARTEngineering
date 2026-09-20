@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMART Engineering &ndash; Diesel Generators, Sub-Stations &amp; Solar Systems</title>
+<meta name="description" content="SMART Engineering supplies and installs diesel generators, complete sub-stations, and solar power systems across Bangladesh, with offices in Dhaka and Faridpur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0f2540;
+    --navy-deep:#0a1b30;
+    --amber:#f2a71b;
+    --amber-dark:#d88f0e;
+    --gray-50:#f6f8fa;
+    --gray-100:#eef1f5;
+    --gray-500:#5b6b7c;
+    --gray-700:#33414f;
+    --white:#ffffff;
+    --radius:10px;
+    --shadow:0 10px 30px rgba(15,37,64,0.08);
+    --maxw:1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--gray-700);
+    background:var(--white);
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Poppins',sans-serif;
+    color:var(--navy);
+    margin:0 0 .5em;
+    line-height:1.25;
+  }
+  p{margin:0 0 1em;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;margin:0;padding:0;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--amber);color:var(--navy-deep);
+    font-weight:600;padding:12px 26px;border-radius:999px;
+    border:none;cursor:pointer;transition:background .2s ease, transform .2s ease;
+    font-family:'Inter',sans-serif;
+  }
+  .btn:hover{background:var(--amber-dark);transform:translateY(-1px);}
+
+  /* ===== Top bar ===== */
+  .topbar{background:var(--navy-deep);color:#cfd9e4;font-size:14px;}
+  .topbar .wrap{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:flex-end;padding:8px 24px;}
+  .topbar a{display:flex;align-items:center;gap:6px;color:#cfd9e4;}
+  .topbar a:hover{color:var(--amber);}
+  .topbar svg{width:14px;height:14px;fill:var(--amber);}
+
+  /* ===== Header ===== */
+  header.main{background:var(--white);border-bottom:1px solid var(--gray-100);position:sticky;top:0;z-index:50;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;gap:20px;}
+  .logo{font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;color:var(--navy);letter-spacing:.3px;}
+  .logo span{color:var(--amber);}
+  .nav-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+  .nav-links a{font-weight:500;font-size:15px;color:var(--gray-700);padding:6px 2px;}
+  .nav-links a:hover, .nav-links a.active{color:var(--amber-dark);}
+  .nav-links .dropdown{position:relative;}
+  .nav-links .dropdown-menu{
+    display:none;position:absolute;top:100%;left:0;background:var(--white);
+    box-shadow:var(--shadow);border-radius:8px;min-width:180px;padding:8px 0;margin-top:8px;
+  }
+  .nav-links .dropdown:hover .dropdown-menu{display:block;}
+  .dropdown-menu a{display:block;padding:8px 18px;font-size:14px;}
+  .dropdown-menu a:hover{background:var(--gray-50);}
+  .dropdown-menu a.active{color:var(--amber-dark);}
+  .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .menu-toggle svg{width:26px;height:26px;fill:var(--navy);}
+
+  @media (max-width:900px){
+    .nav-links{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      background:var(--white);flex-direction:column;align-items:flex-start;
+      padding:16px 24px;box-shadow:var(--shadow);gap:14px;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links .dropdown-menu{position:static;box-shadow:none;padding-left:12px;margin-top:4px;}
+    .menu-toggle{display:block;}
+    .topbar .wrap{justify-content:center;text-align:center;}
+  }
+
+  /* ===== Page hero ===== */
+  .page-hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:var(--white);text-align:center;padding:64px 24px 56px;
+  }
+  .page-hero h1{color:var(--white);font-size:38px;margin-bottom:8px;}
+  .page-hero p{color:#c7d3de;max-width:560px;margin:0 auto;}
+
+  /* ===== Gallery slider ===== */
+  .gallery-section{padding:56px 0 0;background:var(--gray-50);}
+  .gallery-frame{
+    max-width:760px;margin:0 auto;border-radius:16px;overflow:hidden;
+    box-shadow:var(--shadow);position:relative;background:var(--navy);
+    aspect-ratio:16/9;
+  }
+  .gallery-track{display:flex;height:100%;transition:transform .5s ease;}
+  .gallery-track img{width:100%;height:100%;object-fit:cover;flex:none;}
+  .gallery-dots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
+  .gallery-dots button{
+    width:9px;height:9px;border-radius:50%;border:none;background:var(--gray-100);
+    cursor:pointer;padding:0;
+  }
+  .gallery-dots button.active{background:var(--amber);}
+  .gallery-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:38px;height:38px;border-radius:50%;border:none;background:rgba(255,255,255,0.85);
+    color:var(--navy);display:flex;align-items:center;justify-content:center;cursor:pointer;
+    font-size:16px;z-index:5;
+  }
+  .gallery-arrow:hover{background:var(--white);}
+  .gallery-arrow.prev{left:14px;}
+  .gallery-arrow.next{right:14px;}
+
+  /* ===== Intro section ===== */
+  .intro-section{padding:56px 0 72px;background:var(--gray-50);}
+  .intro-grid{max-width:760px;margin:0 auto;text-align:center;}
+  .intro-grid h2{font-size:28px;}
+  .intro-grid p{color:var(--gray-500);font-size:15.5px;}
+
+  /* ===== Brand gallery ===== */
+  .brand-section{padding:72px 0;}
+  .brand-heading{text-align:center;max-width:560px;margin:0 auto 40px;}
+  .brand-heading h2{font-size:28px;}
+  .brand-heading p{color:var(--gray-500);}
+  .brand-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  @media (max-width:860px){.brand-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:560px){.brand-grid{grid-template-columns:repeat(2,1fr);}}
+  .brand-grid figure{
+    margin:0;border-radius:12px;overflow:hidden;aspect-ratio:1/1;
+    background:var(--gray-50);border:1px solid var(--gray-100);
+  }
+  .brand-grid img{width:100%;height:100%;object-fit:cover;}
+
+  /* ===== CTA strip ===== */
+  .cta-strip{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:var(--white);text-align:center;padding:56px 24px;
+  }
+  .cta-strip h2{color:var(--white);font-size:26px;}
+  .cta-strip p{color:#c7d3de;max-width:480px;margin:0 auto 22px;}
+
+  /* ===== Footer ===== */
+  footer{background:var(--navy-deep);color:#b7c4d1;padding:64px 0 0;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;
+    padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.footer-grid{grid-template-columns:1fr;}}
+  footer h3{color:var(--white);font-size:17px;margin-bottom:6px;}
+  footer > .wrap > .footer-grid p.lead{color:#8ea0b2;font-size:14px;margin-bottom:18px;}
+
+  .footer-contact{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+  .info-item{display:flex;gap:14px;align-items:flex-start;}
+  .info-icon{
+    width:38px;height:38px;flex:none;border-radius:10px;
+    background:rgba(242,167,27,0.12);display:flex;align-items:center;justify-content:center;
+  }
+  .info-icon svg{width:18px;height:18px;fill:var(--amber);}
+  .footer-contact p, .footer-contact a{color:#b7c4d1;font-size:14px;margin:0;}
+  .footer-contact a:hover{color:var(--amber);}
+
+  .footer-links li{margin-bottom:10px;}
+  .footer-links a{font-size:14px;color:#b7c4d1;display:flex;align-items:center;gap:8px;}
+  .footer-links a:hover{color:var(--amber);}
+
+  .social-row{display:flex;gap:12px;margin-top:20px;}
+  .social-row a{
+    width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.06);
+    display:flex;align-items:center;justify-content:center;color:#e6ecf2;
+    transition:background .2s ease, color .2s ease;
+  }
+  .social-row a:hover{background:var(--amber);color:var(--navy-deep);}
+  .social-row svg{width:17px;height:17px;fill:currentColor;}
+
+  .footer-bottom{padding:22px 0;text-align:center;font-size:13.5px;color:#8ea0b2;}
+
+  #backToTop{
+    position:fixed;bottom:26px;right:26px;width:48px;height:48px;
+    border-radius:50%;border:none;background:var(--amber);color:var(--navy-deep);
+    font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);opacity:0;pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;z-index:999;
+  }
+  #backToTop.show{opacity:1;pointer-events:auto;}
+  #backToTop:hover{transform:translateY(-3px);}
+
+  /* ===== Hero slider ===== */
+  .hero{position:relative;height:clamp(460px,72vh,620px);overflow:hidden;background:var(--navy-deep);}
+  .hero-track{display:flex;height:100%;transition:transform .7s ease;}
+  .hero-track img{width:100%;height:100%;object-fit:cover;flex:none;}
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(10,27,48,0.92) 0%,rgba(10,27,48,0.72) 45%,rgba(10,27,48,0.35) 100%);
+    display:flex;align-items:center;
+  }
+  .hero-content{max-width:620px;color:var(--white);}
+  .hero-content .eyebrow{
+    display:inline-block;font-size:12.5px;letter-spacing:1.8px;text-transform:uppercase;
+    color:var(--amber);font-weight:600;margin-bottom:14px;
+  }
+  .hero-content h1{color:var(--white);font-size:clamp(30px,4.4vw,46px);margin-bottom:16px;}
+  .hero-content p{color:#cbd6e2;font-size:16.5px;margin-bottom:28px;max-width:520px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:999px;
+    border:1.5px solid rgba(255,255,255,0.45);color:var(--white);font-weight:600;
+    transition:background .2s ease, border-color .2s ease;
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:var(--white);}
+  .hero-dots{position:absolute;bottom:24px;left:0;right:0;display:flex;justify-content:center;gap:9px;z-index:4;}
+  .hero-dots button{
+    width:10px;height:10px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    background:rgba(255,255,255,0.4);
+  }
+  .hero-dots button.active{background:var(--amber);}
+
+  /* ===== Shared section heading ===== */
+  .section-heading{text-align:center;max-width:600px;margin:0 auto 46px;}
+  .section-heading .eyebrow{
+    display:inline-block;font-size:12.5px;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--amber-dark);font-weight:600;margin-bottom:8px;
+  }
+  .section-heading h2{font-size:29px;}
+  .section-heading p{color:var(--gray-500);margin:0;}
+
+  /* ===== About strip ===== */
+  .about-section{padding:80px 0;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+  @media (max-width:880px){.about-grid{grid-template-columns:1fr;gap:32px;}}
+  .about-media{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;}
+  .about-media img{width:100%;height:100%;object-fit:cover;}
+  .about-text .eyebrow{
+    display:inline-block;font-size:12.5px;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--amber-dark);font-weight:600;margin-bottom:8px;
+  }
+  .about-text h2{font-size:29px;}
+  .about-text p{color:var(--gray-500);font-size:15.5px;}
+  .check-list{margin-top:22px;display:flex;flex-direction:column;gap:12px;}
+  .check-list li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--gray-700);}
+  .check-list svg{width:18px;height:18px;flex:none;fill:var(--amber);margin-top:3px;}
+
+  /* ===== Product cards ===== */
+  .products-section{padding:80px 0;background:var(--gray-50);}
+  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  @media (max-width:880px){.product-grid{grid-template-columns:1fr;}}
+  .product-card{
+    background:var(--white);border:1px solid var(--gray-100);border-radius:14px;
+    overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
+    transition:transform .25s ease;
+  }
+  .product-card:hover{transform:translateY(-4px);}
+  .product-card .thumb{aspect-ratio:16/10;overflow:hidden;background:var(--gray-100);}
+  .product-card .thumb img{width:100%;height:100%;object-fit:cover;}
+  .product-card .body{padding:26px 26px 30px;display:flex;flex-direction:column;flex:1;}
+  .product-card h3{font-size:19px;margin-bottom:8px;}
+  .product-card p{color:var(--gray-500);font-size:14.5px;flex:1;}
+  .product-card .more{
+    color:var(--amber-dark);font-weight:600;font-size:14.5px;
+    display:inline-flex;align-items:center;gap:6px;margin-top:6px;
+  }
+
+  /* ===== Stats ===== */
+  .stats-section{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:var(--white);padding:64px 0;
+  }
+  .stats-section h2{color:var(--white);text-align:center;font-size:27px;margin-bottom:44px;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center;}
+  @media (max-width:760px){.stats-grid{grid-template-columns:1fr 1fr;gap:34px 20px;}}
+  .stat .num{
+    font-family:'Poppins',sans-serif;font-size:40px;font-weight:700;color:var(--amber);line-height:1;
+  }
+  .stat .label{color:#c7d3de;font-size:14.5px;margin-top:8px;}
+
+  /* ===== Services ===== */
+  .services-section{padding:80px 0;}
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  @media (max-width:980px){.service-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:520px){.service-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--white);border:1px solid var(--gray-100);border-radius:14px;
+    padding:30px 26px;text-align:center;box-shadow:var(--shadow);
+  }
+  .service-icon{
+    width:52px;height:52px;margin:0 auto 18px;border-radius:14px;
+    background:rgba(242,167,27,0.14);display:flex;align-items:center;justify-content:center;
+  }
+  .service-icon svg{width:24px;height:24px;fill:var(--amber-dark);}
+  .service-card h3{font-size:17px;margin-bottom:6px;}
+  .service-card p{color:var(--gray-500);font-size:14.5px;margin:0;}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="wrap">
+    <a href="tel:+8801840490226">
+      <svg viewBox="0 0 512 512"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"/></svg>
+      +88 01840-490226
+    </a>
+    <a href="tel:+8801759902142">
+      <svg viewBox="0 0 512 512"><path d="M497.39 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.66 370.66 0 0 1 130.6 204.11l60.6-49.6a23.94 23.94 0 0 0 6.9-28l-48-112A24.16 24.16 0 0 0 122.6.61l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.29 24.29 0 0 0-14.01-27.6z"/></svg>
+      01759-902142
+    </a>
+    <a href="mailto:smartengineering226@gmail.com">
+      <svg viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg>
+      smartengineering226@gmail.com
+    </a>
+  </div>
+</div>
+
+<!-- Header / Nav -->
+<header class="main">
+  <div class="nav wrap">
+    <a href="index.html" class="logo">SMART <span>Engineering</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 1000 1000"><path d="M104 333H896C929 333 958 304 958 271S929 208 896 208H104C71 208 42 237 42 271S71 333 104 333ZM104 583H896C929 583 958 554 958 521S929 458 896 458H104C71 458 42 487 42 521S71 583 104 583ZM104 833H896C929 833 958 804 958 771S929 708 896 708H104C71 708 42 737 42 771S71 833 104 833Z"/></svg>
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <div class="dropdown">
+        <a href="#">Product</a>
+        <div class="dropdown-menu">
+          <a href="diesel-generator.html">Diesel Generator</a>
+          <a href="sub-station.html">Sub-Station</a>
+          <a href="solar-system.html">Solar System</a>
+        </div>
+      </div>
+      <a href="services.html">Services</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-track" id="heroTrack">
+    <img src="wp-content/uploads/2025/09/1.jpg" alt="Diesel generator installed by SMART Engineering">
+    <img src="wp-content/uploads/2025/09/2.jpg" alt="Electrical sub-station built by SMART Engineering">
+    <img src="wp-content/uploads/2025/09/3.jpg" alt="Solar panel system installed by SMART Engineering">
+  </div>
+  <div class="hero-overlay">
+    <div class="wrap">
+      <div class="hero-content">
+        <span class="eyebrow">Empowering You 24/7</span>
+        <h1>Reliable power solutions for homes, businesses, and industry</h1>
+        <p>Diesel generators, complete sub-stations, and solar systems &mdash; designed, installed, and maintained by SMART Engineering in Dhaka and Faridpur.</p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn">Get a Quote</a>
+          <a href="about.html" class="btn-ghost">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots"></div>
+</section>
+
+<!-- About -->
+<section class="about-section">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="eyebrow">About Us</span>
+        <h2>We are dedicated to supporting you</h2>
+        <p>At SMART Engineering, we believe that reliable power is the foundation of modern life. From households to large industries, uninterrupted electricity is essential. That&rsquo;s why we specialize in delivering three core solutions: Diesel Generators, Complete Substations, and Complete Solar Systems.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 512 512"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></svg><span>Delivering reliable power solutions for homes and businesses</span></li>
+          <li><svg viewBox="0 0 512 512"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></svg><span>Focused on quality, innovation, and customer satisfaction</span></li>
+          <li><svg viewBox="0 0 512 512"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></svg><span>Empowering you 24/7 with trusted energy systems</span></li>
+        </ul>
+      </div>
+      <div class="about-media">
+        <img src="wp-content/uploads/2025/09/7.jpg" alt="SMART Engineering generator installation">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products-section">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="eyebrow">Products</span>
+      <h2>Our Products</h2>
+      <p>We provide high-performance power solutions tailored to your needs.</p>
+    </div>
+    <div class="product-grid">
+      <a class="product-card" href="diesel-generator.html">
+        <div class="thumb"><img src="wp-content/uploads/2025/09/1.jpg" alt="Diesel generator" loading="lazy"></div>
+        <div class="body">
+          <h3>Diesel Generator</h3>
+          <p>Dependable backup power that keeps your home, office, or factory running through any outage.</p>
+          <span class="more">View details &rarr;</span>
+        </div>
+      </a>
+      <a class="product-card" href="sub-station.html">
+        <div class="thumb"><img src="wp-content/uploads/2025/09/5.jpg" alt="Electrical sub-station" loading="lazy"></div>
+        <div class="body">
+          <h3>Sub-Station</h3>
+          <p>Custom-engineered substations for safe, efficient power distribution, from design to commissioning.</p>
+          <span class="more">View details &rarr;</span>
+        </div>
+      </a>
+      <a class="product-card" href="solar-system.html">
+        <div class="thumb"><img src="wp-content/uploads/2025/09/4.jpg" alt="Solar power system" loading="lazy"></div>
+        <div class="body">
+          <h3>Solar System</h3>
+          <p>Eco-friendly solar energy with battery storage that cuts bills and builds energy independence.</p>
+          <span class="more">View details &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section">
+  <div class="wrap">
+    <h2>Delivering Trusted Power Solutions</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="num">10+</div><div class="label">Years of Experience</div></div>
+      <div class="stat"><div class="num">100%</div><div class="label">Quality Products</div></div>
+      <div class="stat"><div class="num">1k+</div><div class="label">Satisfied Customers</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="label">Customer Service</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services-section">
+  <div class="wrap">
+    <div class="section-heading">
+      <span class="eyebrow">Our Services</span>
+      <h2>End-to-end power and energy support</h2>
+      <p>Complete solutions in power generation, distribution, and renewable energy.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 384 512"><path d="M320 32a32 32 0 0 0-64 0v96h64zm48 128H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h16v32a160.07 160.07 0 0 0 128 156.8V512h64v-99.2A160.07 160.07 0 0 0 352 256v-32h16a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm-240-32a32 32 0 0 0-64 0v96h64z"/></svg></div>
+        <h3>Generator Supply</h3>
+        <p>Reliable backup energy, sized and installed for your exact load.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 320 512"><path d="M296 160H180.6l42.6-129.8C227.2 15 215.7 0 200 0H56C44 0 33.8 8.9 32.2 20.8l-32 240C-1.7 275.2 9.5 288 24 288h118.7L96.6 482.5c-3.6 15.2 8 29.5 23.3 29.5 8.4 0 16.4-4.4 20.8-12l176-304c9.3-15.9-2.2-36-20.7-36z"/></svg></div>
+        <h3>Sub-Station Works</h3>
+        <p>Safe and efficient distribution, engineered to international standards.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 512 512"><path d="M256 96c-88.4 0-160 71.6-160 160s71.6 160 160 160 160-71.6 160-160S344.4 96 256 96zm0 272c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112zm0-320c13.3 0 24-10.7 24-24V24c0-13.3-10.7-24-24-24s-24 10.7-24 24v24c0 13.3 10.7 24 24 24zm0 416c-13.3 0-24 10.7-24 24v24c0 13.3 10.7 24 24 24s24-10.7 24-24v-24c0-13.3-10.7-24-24-24zM488 232h-24c-13.3 0-24 10.7-24 24s10.7 24 24 24h24c13.3 0 24-10.7 24-24s-10.7-24-24-24zM72 256c0-13.3-10.7-24-24-24H24c-13.3 0-24 10.7-24 24s10.7 24 24 24h24c13.3 0 24-10.7 24-24zm352-166.4l-17 17c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9s-24.5-9.4-33.9 0zM105.1 406.9l-17 17c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9s-24.5-9.3-33.9 0zm335.8 0c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-17-17zM88.1 88.1c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-17-17c-9.3-9.4-24.5-9.4-33.9 0z"/></svg></div>
+        <h3>Solar Energy</h3>
+        <p>Clean, green, cost-saving systems with optional battery storage.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg></div>
+        <h3>24/7 Support</h3>
+        <p>Maintenance and emergency service whenever you need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <h2>Need dependable power at your site?</h2>
+  <p>Tell us about your project and our engineers will recommend the right system.</p>
+  <a href="contact.html" class="btn">Request A Quote</a>
+</section>
+
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <div>
+        <h3>Get In Touch</h3>
+        <p class="lead">Stay connected with us anytime.</p>
+        <div class="footer-contact">
+          <div class="info-item">
+            <div class="info-icon"><svg viewBox="0 0 384 512"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/></svg></div>
+            <p>Dhaka: Bosilha, Mohammadpur, Dhaka<br>Faridpur: 1st Floor, 24/1, Main Road, Faridpur Sadar</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg></div>
+            <p><a href="tel:+8801840490226">+88 01840-490226</a> · <a href="tel:+8801759902142">01759-902142</a></p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><svg viewBox="0 0 512 512"><path d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm0 48v40.805c-22.422 18.259-58.168 46.651-134.587 106.49-16.841 13.247-50.201 45.072-73.413 44.701-23.208.375-56.579-31.459-73.413-44.701C106.18 199.465 70.425 171.067 48 152.805V112h416zM48 400V214.398c22.914 18.251 55.409 43.862 104.938 82.646 21.857 17.205 60.134 55.186 103.062 54.955 42.717.231 80.509-37.199 103.053-54.947 49.528-38.783 82.032-64.401 104.947-82.653V400H48z"/></svg></div>
+            <p><a href="mailto:smartengineering226@gmail.com">smartengineering226@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3>Why SMART Engineering</h3>
+        <p class="lead">Quality, service, and reliability.</p>
+        <ul class="footer-links">
+          <li>Affordable pricing with quotes</li>
+          <li>End-to-end turnkey services</li>
+          <li>Professional installation &amp; support</li>
+          <li>Reliable products, proven results</li>
+          <li>Dedicated 24/7 customer care</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <p class="lead">Complete solutions under one roof.</p>
+        <ul class="footer-links">
+          <li><a href="about.html">→ About Us</a></li>
+          <li><a href="mission-vision.html">→ Our Mission &amp; Vision</a></li>
+          <li><a href="product.html">→ Product</a></li>
+          <li><a href="services.html">→ Services</a></li>
+          <li><a href="faqs.html">→ FAQs</a></li>
+          <li><a href="contact.html">→ Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Let's Get Social</h3>
+        <p class="lead">Follow us for updates daily.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-341C24.09 107 0 82.9 0 53.6a53.6 53.6 0 01107.2 0c0 29.3-24.1 53.4-53.4 53.4zM447.9 448h-92.7V302.4c0-34.7-.7-79.3-48.3-79.3-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 SMART Engineering. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('show', window.scrollY > 200);
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  (function(){
+    const track = document.getElementById('heroTrack');
+    const slides = track.children;
+    const dotsWrap = document.getElementById('heroDots');
+    let current = 0;
+
+    for (let i = 0; i < slides.length; i++) {
+      const dot = document.createElement('button');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    }
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    setInterval(() => goTo(current + 1), 5000);
+  })();
+</script>
+
+</body>
+</html>
